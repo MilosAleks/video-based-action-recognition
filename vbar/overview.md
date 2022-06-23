@@ -1,4 +1,4 @@
-# Intro und Überblick
+# Überblick
 
 ```{note}
 Die Inhalte basieren auf/ entsprechen den Erkenntnissen dieses [Papers](https://arxiv.org/abs/1711.11248).
