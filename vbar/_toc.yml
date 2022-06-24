@@ -5,6 +5,9 @@ format: jb-book
 root: overview
 chapters:
 - file: introduction
+- file: architectures
+- file: experiments
+- file: conclusion
 - file: markdown
 - file: notebooks
 - file: markdown-notebooks

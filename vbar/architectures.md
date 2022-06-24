@@ -1,0 +1,3 @@
+# Architekturen
+
+Hier die verschiedenen Architekturen ...
