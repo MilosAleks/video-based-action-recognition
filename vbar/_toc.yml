@@ -8,6 +8,7 @@ chapters:
 - file: architectures
 - file: experiments
 - file: conclusion
+- file: references
 - file: markdown
 - file: notebooks
 - file: markdown-notebooks
