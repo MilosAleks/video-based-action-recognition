@@ -2,8 +2,6 @@
 
 Hier Einleitungstext und Grundlagen (eventuell neues Kapitel ??) ...
 
-[Sports-1M Datensatz](https://paperswithcode.com/dataset/sports-1m)
-
 Die Definition einer Aktion (eng./ff. Action) nach Lan et. al ist als eine einfache, atomare Bewegung, die von einer einzelnen Person ausgeführt wird. Darauffolgenden ist eine Aktivität (eng. Activity) die sich auf ein komplexeres Szenario bezieht, an dem eine Gruppe von Menschen beteiligt ist
 
 ![AlexNet](img/AlexNetArchitecture.png){cite}'NIPS2012_c399862d'
