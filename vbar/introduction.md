@@ -2,6 +2,7 @@
 
 Hier Einleitungstext und Grundlagen (eventuell neues Kapitel ??) ...
 
+<<<<<<< HEAD
 [Sports-1M Datensatz](https://paperswithcode.com/dataset/sports-1m)
 
 Der Begriff der Aktion (ff., eng. Action) folgt keiner universelle Terminologie aber kann angenähert werden nach Lan et. al als eine "einfache, atomare Bewegung, die von einer einzelnen Person ausgeführt wird." Konsequent führt dies zur nächsten Frage, nämlich was ist denn eine bzw. welche Aktionen fallen den unter der Definition von Lan et. al? 
@@ -39,6 +40,9 @@ wobei
 Je nachdem ob $t$ präsent ist, ist das Signal ein Video oder ein Image. Somit können wir Videos als eine zeitlich aufeinanderfolgende Reihe von Images verstehen. 
 
 
+=======
+Die Definition einer Aktion (eng./ff. Action) nach Lan et. al ist als eine einfache, atomare Bewegung, die von einer einzelnen Person ausgeführt wird. Darauffolgenden ist eine Aktivität (eng. Activity) die sich auf ein komplexeres Szenario bezieht, an dem eine Gruppe von Menschen beteiligt ist
+>>>>>>> 08bf9fda89bf8d3e0e6ea4f149de5c24a3532e2a
 
 ![AlexNet](img/AlexNetArchitecture.png){cite}'NIPS2012_c399862d'
 
