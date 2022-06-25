@@ -2,9 +2,10 @@
 
 ```{note}
 Die in diesem Abschnitt betrachteten spatio-temporal Convolutional-Varianten sind alle im Rahmen des Residualen-Lernens zu betrachten.
-Des Weiteren werden nur "Vanilla-Blocks" (bsp. ohne Bottlenecks) verwendet. Ein Block besteht dabei aus 2 Convolutional-Schichten oder -Layer, sowie einer Aktivierungsfunktion nach den Beiden.
+Des Weiteren werden nur "Vanilla-Blocks" (bspw. ohne Bottlenecks) verwendet. Ein Block besteht dabei aus 2 Convolutional-Schichten oder -Layer, sowie einer Aktivierungsfunktion nach den Beiden.
 Für die Klassifizierung ist ein fully-connected Layer verantwortlich.
 ```
+
 ## Variablen
 
 Unseren Input-Tensor
@@ -47,9 +48,87 @@ wobei
 - $d$ für die räumliche Breite und Höhe steht.
 
 ```{note}
-Die Convolution der 3D Filter sind nur über die räumlichen Dimensionen (und dementsprechend 2D) des vorhergehenden Tensors $z_{i-1}$. Jeder Filter hat nur einen Kanal als Output, wodurch bereits nach der ersten Convolution-Schicht temporale Schlüsse nicht mehr nachzuvollziehen sind. Entsprechend ist in diesem Netz kein temporales Striding erforderlich.
+Die Convolution der 3D Filter sind nur über die räumlichen Dimensionen (und dementsprechend 2D) des vorhergehenden Tensors $z_{i-1}$. So fasst die erste Convolution-Schicht, indem alle Filter nur einen Output-Kanal haben, alle Informationen in einen Kanal zusammen. Entsprechend sind in den weiteren Schichten diese temporalen Informationen nicht mehr nachzuvollziehen.
 ```
 
-## F-R2D: 2D Convolutions über Frames
+## F-R2D: (Frame-based) 2D Convolution
+
+In diesem Ansatz werden die Frames unabh. voneinander über eine Reihe 2D Residual-Blöcken bearbeitet. Hierbei werden die selben Filter für alle Frames verwendet.
+Sprich: In den Convolutional-Schichten wird nicht temporal modelliert.
 
 ## R3D: 3D Convolutions
+
+3D Convolutions erhalten temporale Informationen und verbreiten diese durch die Schichten des Netzes. Der Tensor $z_i$ ist in diesem Fall 4D mit der Größe
+
+$N_i \times L \times H_i \times W_i$
+
+wobei
+
+- $N_i$ für die Anzahl der verwendeten Filter des $i$-ten Blocks steht.
+
+Alle Filter sind 4-dimensional und entsprechen der Größe
+
+$N_{i-1} \times t \times d \times d$
+
+wobei
+
+- $t$ die temporale Breite des Filters beschreibt. Im Rahmen dieser Arbeit setzten wir diese auf 3.
+
+Demnach sind die Filter 3D und decken zeitliche- als auch räumliche Dimensionen ab.
+
+## MC$x$: Mixed 3D-2D Convolutions
+
+Eine Hypothese ist, dass das Modellieren von Bewegungen (bps. 3D Convolutions) in früheren Schichten besonders nützlich ist, dies aber in abstrakteren/ oder späteren Schichten nicht mehr der Fall ist.
+Dementsprechend könnte eine vielversprechende Architektur mit 3D Convolutions starten, und mit 2D Convolutionen enden.
+
+Da wir in dieser Arbeit 3D Residual Netzwerke (R3D) mit 5 Bereichen von Convolutionen betrachten, erstellen wir die Netzwerke "Mixed Convolutions 2-5 (MC 2-5)". Der Index steht dabei für den entsprechenden Bereich, ab welchem die 3D -, durch 2D Convolutionen ersetzt werden (MC4 bspw. beschreibt eine CNN-Architektur mit 3D Convolutionen, mit 2D Convolutionen in der 4. und 5. Schicht).
+MC1 entspricht dabei einer "Vanilla" F-R2D Architektur, welches bereits beschrieben wurden.
+
+Alternativ besteht die Hypothese, dass das Modellieren in tieferen Schichten von Vorteil sein könnte, wenn die Erscheinungs-Informationen in frühen Schichten via 2D Convolutionen erfasst werden. Um dem nachzukommen, experimentieren wir auch mit "Reversed Mixed Convolutions".
+Mit der identischen Namenskonvention erhalten wir die Modelle: RMC2, RMC3, RMC4 und RMC5 (RMC3 würde demnach 2D Convolutionen in Block 1 und 2 haben, während der Rest der Architektur aus 3D Convolutionen besteht).
+
+## R(2+1)D: (2+1)D Convolutionen
+
+Eine weitere Theorie beinhaltet, dass das Auftrennen der Merkmale mittels einer 2D und 1D Convolution, 3D Convolutionen besser abbilden kann. Demnach wird die Architektur R(2+1)D implementiert, in welcher die $N_i$ 3D Filter der Größe 
+
+$N_{i-1} \times t \times d \times d$
+
+durch einen (2+1)D Block bestehend aus 2D Filter (Höhe/ Breite) $M_i$ der Größe 
+
+$N_{i-1} \times 1 \times d \times d$
+
+und Filter (Zeit) $N_i$ der Größe
+
+$M_1 \times t \times 1 \times 1$
+
+ersetzt wird.
+
+Der Hyperparameter $M_i$ bestimmt die Dimensionalität des Unterraums, in welchem sich die Convolutionen befinden. In unserem Fall wird $M_i$ so bestimmt, dass die Anzahl der Parameter in den Blöcken identisch zu denen einer 3D Architektur sind. 
+Das beschriebene Raum-Zeit-Auftrennen kann in allen Schichten verwendet werden.
+Operationen wie bspw. Striding werden auch, entsprechend ihrer Dimension, zerteilt. 
+Dies kann im Anschluss, in der vereinfachten Version, in welcher der Input-Tensor aus nur einem Kanal besteht ($N_{i-1} = 1$), betrachtet werden:
+
+![R(2+1)D Architektur](img/r(2+1)d_architecture.png)
+
+Links: 3D Convolution mit Filter der Größe 
+
+$t \times d \times d$
+
+wobei
+
+- $t$ die zeitliche Komponente abbildet und
+- $d$ die räumliche Höhe und Breite.
+
+Rechts: Ein (2+1)D Convolution Block, bestehend aus einer 2D Convolution (Raum) und einer 1D Convolution (Zeit). Die Anzahl der 2D Filter ($M_i$) wird so bestimmt, dass die Anzahl der Parameter der eines 3D Convolution Blockes entspricht. 
+
+Vorteile der Architektur im Vergleich zu einer "normalen" 3D Architektur:
+- Trotz einer identischen Anzahl an Parametern, verdoppeln sich die Nichtlinearitäten/ Funktionen im Netz (durch die Funktionen zwischen den 2D - und 1D Convolutionen). Dies erhöht die Komplexität der darstellbaren Funktionen, wie bereits in VGG Netzen zu beobachten war.
+- Das Auftrennen in räumliche- und zeitliche Komponenten vereinfacht das Optimieren, denn die Fehlerrate beim Trainieren des Netzes war für 3D Convolutional Netze trotz identischen Umständen (Anzahl Schichten, Parameter, ...) höher:
+
+![Fehlerraten von (2+1)D and R3D](img/error_rate_comp.png)
+
+Wie dem Schaubild entnommen werden kann, erzielt R(2+1)D eine bessere Fehlerrate für Test- und Trainingsdaten. Da der Unterschied mit einer zunehmender Anzahl an Schichten (Links: 18, Rechts: 34) wächst, schließen wir, dass auch das Optimieren mit zunehmender Netztiefe zunimmt.
+
+## Überblick
+
+![Architekturen](img/architectures.png)
