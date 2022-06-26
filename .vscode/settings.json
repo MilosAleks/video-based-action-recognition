@@ -4,10 +4,12 @@
         "bspw",
         "Convolutional",
         "Convolutionen",
+        "Downsampling",
         "Faltungs",
         "Faltungsblock",
         "Faltungsvarianten",
         "spatio",
+        "Tensoren",
         "unabh"
     ]
 }
