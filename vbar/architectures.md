@@ -78,14 +78,14 @@ Demnach sind die Filter 3D und decken zeitliche- als auch räumliche Dimensionen
 
 ## MC$x$: Mixed 3D-2D Convolutions
 
-Eine Hypothese ist, dass das Modellieren von Bewegungen (bps. 3D Convolutions) in früheren Schichten besonders nützlich ist, dies aber in abstrakteren/ oder späteren Schichten nicht mehr der Fall ist.
+Eine Hypothese ist, dass das Modellieren von Bewegungen (bps. mittels 3D Convolutions) in früheren Schichten besonders nützlich ist, dies aber in abstrakteren/ oder späteren Schichten nicht mehr der Fall ist.
 Dementsprechend könnte eine vielversprechende Architektur mit 3D Convolutions starten, und mit 2D Convolutionen enden.
 
 Da wir in dieser Arbeit 3D Residual Netzwerke (R3D) mit 5 Bereichen von Convolutionen betrachten, erstellen wir die Netzwerke "Mixed Convolutions 2-5 (MC 2-5)". Der Index steht dabei für den entsprechenden Bereich, ab welchem die 3D -, durch 2D Convolutionen ersetzt werden (MC4 bspw. beschreibt eine CNN-Architektur mit 3D Convolutionen, mit 2D Convolutionen in der 4. und 5. Schicht).
 MC1 entspricht dabei einer "Vanilla" F-R2D Architektur, welches bereits beschrieben wurden.
 
 Alternativ besteht die Hypothese, dass das Modellieren in tieferen Schichten von Vorteil sein könnte, wenn die Erscheinungs-Informationen in frühen Schichten via 2D Convolutionen erfasst werden. Um dem nachzukommen, experimentieren wir auch mit "Reversed Mixed Convolutions".
-Mit der identischen Namenskonvention erhalten wir die Modelle: RMC2, RMC3, RMC4 und RMC5 (RMC3 würde demnach 2D Convolutionen in Block 1 und 2 haben, während der Rest der Architektur aus 3D Convolutionen besteht).
+Mit der identischen Namenskonvention erhalten wir die Modelle: R-MC2, R-MC3, R-MC4 und R-MC5 (R-MC3 würde demnach 2D Convolutionen in Block 1 und 2 haben, während der Rest der Architektur aus 3D Convolutionen besteht).
 
 ## R(2+1)D: (2+1)D Convolutionen
 
