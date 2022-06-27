@@ -48,6 +48,8 @@ Top-1-Accuracy ist die konventionelle Accuracy/ Genauigkeit, sprich die Modellan
 
 *Die in diesem Abschnitt verwendeten Zahlen und Erkenntnisse sind der anschließenden Tabelle entnommen.*
 
+![Accuracy für Handlungserkennung für verschiedene Formen von Convolutions auf dem Kinetics Datenset](img/comp_accuracy.png)
+
 Es besteht ein deutlicher Unterschied in der Performance der 2D (R2D und F-R2D) und 3D oder vermischten Residual Netzen (MC$x$ und R-MC$x$). Die 2D Architekturen schneiden im Schnitt bis zu 4% bei 8-Frame Clips und bis zu 6.5%, wenn die Modelle mit 16 Frame-Clips als Input trainiert wurden, schlechter ab. 
 Hieraus schließen wir, dass das Modellieren von Bewegungen, von Bedeutung ist (wie in MC$x$ beschrieben).
 
@@ -75,8 +77,12 @@ Dementsprechend ist R-MC2 *teurer*, da es Downsampling erst ab der 3. Schicht ve
 
 Während R(2+1) fast die identische Anzahl an Parametern und Berechnungskomplexität wie R3D hat, erzielt die Architektur eine bessere Accuracy (3-5%).
 
-*Why are (2+1)D convolutions better than 3D?*
+*Warum sind (2+1)D Convolutions besser als 3D Convolutionen?*
+
+![Fehlerraten von (2+1)D and R3D](img/error_rate_comp.png)
+
+Wie dem Schaubild entnommen werden kann, erzielt R(2+1)D eine bessere Fehlerrate für Test- und Trainingsdaten. Da der Unterschied mit einer zunehmender Anzahl an Schichten (Links: 18, Rechts: 34) wächst, schließen wir, dass das Optimieren mit zunehmender Netztiefe weiter zunimmt.
+
+## Überdenken der Praktiken für die Predictions auf Videoebene
 
 ...
-
-![Accuracy für Handlungserkennung für verschiedene Formen von Convolutions auf dem Kinetics Datenset](img/comp_accuracy.png)

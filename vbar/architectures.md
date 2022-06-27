@@ -123,11 +123,7 @@ Rechts: Ein (2+1)D Convolution Block, bestehend aus einer 2D Convolution (Raum) 
 
 Vorteile der Architektur im Vergleich zu einer "normalen" 3D Architektur:
 - Trotz einer identischen Anzahl an Parametern, verdoppeln sich die Nichtlinearitäten/ Funktionen im Netz (durch die Funktionen zwischen den 2D - und 1D Convolutionen). Dies erhöht die Komplexität der darstellbaren Funktionen, wie bereits in VGG Netzen zu beobachten war.
-- Das Auftrennen in räumliche- und zeitliche Komponenten vereinfacht das Optimieren, denn die Fehlerrate beim Trainieren des Netzes war für 3D Convolutional Netze trotz identischen Umständen (Anzahl Schichten, Parameter, ...) höher:
-
-![Fehlerraten von (2+1)D and R3D](img/error_rate_comp.png)
-
-Wie dem Schaubild entnommen werden kann, erzielt R(2+1)D eine bessere Fehlerrate für Test- und Trainingsdaten. Da der Unterschied mit einer zunehmender Anzahl an Schichten (Links: 18, Rechts: 34) wächst, schließen wir, dass auch das Optimieren mit zunehmender Netztiefe zunimmt.
+- Das Auftrennen in räumliche- und zeitliche Komponenten vereinfacht das Optimieren, denn die Fehlerrate beim Trainieren des Netzes war für 3D Convolutional Netze trotz identischen Umständen (Anzahl Schichten, Parameter, ...) höher (mehr später).
 
 ## Überblick
 
