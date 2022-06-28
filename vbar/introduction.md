@@ -9,7 +9,7 @@ Konsequent führt dies zur Frage, was ist denn eine bzw. welche Aktionen fallen 
 ![move_and_action](img/Concept_of_moveme_and_action_hierarchy.png)
 {cite}'ahad2011computer'
 
-Basis dieser Kategorisierung ist Vecchio et al. {cite}'MOESLUND200690'.article2. Es sollen (menschliche) Bewegungsabläufe - in diesem Kontext Aktivitäten in ihre Bauteile zerlegt werden. Dies ist definierte als *movemes*. Dabei handelt es sich um ein abstraktes Alphabet für recht primitive Bewegungen. So können aus einer Reihe von movemes eine Action konstruiert. In seiner Dissertation erweitert Fanti {cite}'article', interpretiert er verschiedene (menschliche) Bewegung in einer 3-stufigen Hierarchie und stellt diese wie in Abbilung 1 auf.
+Basis dieser Kategorisierung ist Vecchio et al. {cite}'article2'. Es sollen (menschliche) Bewegungsabläufe - in diesem Kontext Aktivitäten in ihre Bauteile zerlegt werden. Dies ist definierte als *movemes*. Dabei handelt es sich um ein abstraktes Alphabet für recht primitive Bewegungen. So können aus einer Reihe von movemes eine Action konstruiert. In seiner Dissertation erweitert Fanti {cite}'article', interpretiert er verschiedene (menschliche) Bewegung in einer 3-stufigen Hierarchie und stellt diese wie in Abbildung 1 auf.
 ## Action Recognition
 
 ![computer_vision](img/Computer_Vision.png)
@@ -22,7 +22,7 @@ Dazu gehört die Tatsache, dass Handlungen dynamisch sind und in der Regel nicht
 
 ![application_realm_ar](img/Application_realm_AR.png)
 
-Das Verstehen von Bewegungen oder Aktivitäten aus Bildern und Videosequenzen ist eine sehr wichtige, aber schwierige Aufgabe. Das Gebiet der Handlungs- und Aktivitätsdarstellung und -erkennung ist recht gut erforscht (ZITAT) aber noch nicht sehr ausgereift für viele Anwendungen im realen Leben. Die Erkennung der Identität von Personen sowie der Aktionen, Aktivitäten und Verhaltensweisen, die von einer oder mehreren Personen in Videosequenzen ausgeführt werden, ist für verschiedene Anwendungen sehr wichtig. Diverse Anwendungen sind bereits auf dieses Ziel ausgerichtet, um Videos richtig zu verstehen, z.B. in
+Das Verstehen von Bewegungen oder Aktivitäten aus Bildern und Videosequenzen ist eine sehr wichtige, aber schwierige Aufgabe. Das Gebiet der Handlungs- und Aktivitätsdarstellung und -erkennung ist recht gut erforscht {cite}'inproceedings2' aber noch nicht sehr ausgereift für viele Anwendungen im realen Leben. Die Erkennung der Identität von Personen sowie der Aktionen, Aktivitäten und Verhaltensweisen, die von einer oder mehreren Personen in Videosequenzen ausgeführt werden, ist für verschiedene Anwendungen sehr wichtig. Diverse Anwendungen sind bereits auf dieses Ziel ausgerichtet, um Videos richtig zu verstehen, z.B. in
 
 - Intelligente Videoüberwachung,
 - Mixed Reality
@@ -31,7 +31,7 @@ Das Verstehen von Bewegungen oder Aktivitäten aus Bildern und Videosequenzen is
 - Objektverfolgung,
 - Sport-Analytics
 - usw. 
-## Action Recogintion arten
+## Ansätze von Action Recogintion 
 
 Action Recognition ist ein Feld der Computer Vision und kann in mehrere Kategorien unterteilt werden
 
