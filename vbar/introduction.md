@@ -1,98 +1,49 @@
-# Introduction
+# Einführung
 
-Hier Einleitungstext und Grundlagen (eventuell neues Kapitel ??) ...
+## Der Begriff "Action"
 
-[Sports-1M Datensatz](https://paperswithcode.com/dataset/sports-1m)
-
-Der Begriff der Aktion (ff., eng. Action) kann definiert werden nach Lan et. al als eine "einfache, atomare Bewegung, die von einer einzelnen Person ausgeführt wird." Konsequent führt dies zur nächsten Frage, nämlich was ist denn eine bzw. welche Aktionen fallen den unter dieser Definition
-
+Der Begriff der Aktion (ff., eng. Action) kann definiert werden nach Lan et. al {cite}'NIPS2010_2b44928a' als eine "einfache, atomare Bewegung, die von einer einzelnen Person ausgeführt wird." Hingegen sind Aktivitäten auf ein komplexeres Szenario bezogen, an dem u.a. eine Gruppe von Menschen beteiligt ist. Dies ist keine Standardterminologie und oft werden Begriffe wie Action, Activities von vielen Forschern austauschbar angewandt {cite}'MOESLUND200690'.
+Ebenso gibt es keine gut-akzeptierte Nomenklatur oder Kategorisierung für Actions oder Activities.
+Konsequent führt dies zur Frage, was ist denn eine bzw. welche Aktionen fallen den unter dieser Definition.
 
 ![move_and_action](img/Concept_of_moveme_and_action_hierarchy.png)
 {cite}'ahad2011computer'
 
-In Bereich Computer Vision ist Action Recognition (dt. Handlungserkennung) die Aufgabe zu erkennen, wann eine Person in einem Bild oder video eine bestimmte Handlung ausführt. 
-Die Aufgaben von 
+Basis dieser Kategorisierung ist Vecchio et al. {cite}'MOESLUND200690'.article2. Es sollen (menschliche) Bewegungsabläufe - in diesem Kontext Aktivitäten in ihre Bauteile zerlegt werden. Dies ist definierte als *movemes*. Dabei handelt es sich um ein abstraktes Alphabet für recht primitive Bewegungen. So können aus einer Reihe von movemes eine Action konstruiert. In seiner Dissertation erweitert Fanti {cite}'article', interpretiert er verschiedene (menschliche) Bewegung in einer 3-stufigen Hierarchie und stellt diese wie in Abbilung 1 auf.
+## Action Recognition
 
-## Kategorien von Action Recognition
+![computer_vision](img/Computer_Vision.png)
+
+Die Action Recognition (dt. Handlungserkennung) ist ein Feld der Computer Vision. Es soll aus realen Bildern Semantik extrahiert werden, um Modelle generieren zu können. 
+Unter Action Recognition versteht man den Versuch, festzustellen, ob die Eingabedaten ein bestimmtes Objekt, ein bestimmtes Merkmal oder eine bestimmte Aktivität enthalten oder ihnen ähneln. In der Computer Vision besteht Action Recognition darin, eine Action Recognition-Komponente aus einem Video oder einer Bildszene zu entschlüsseln. Auf Menschen bezogen, ist Action Recognition die Aufgabe zu erkennen, wann eine Person in einem Bild oder video eine bestimmte Handlung ausführt. 
+
+Dazu gehört die Tatsache, dass Handlungen dynamisch sind und in der Regel nicht einfach durch die Betrachtung einzelner Zeitpunkte erkannt werden können. Die Erkennung von Handlungen wird außerdem durch die Unterschiede zwischen Menschen und sogar zwischen den Instanzen einer einzelnen Person erschwert. Schließlich erfordert eine erfolgreiche Handlungserkennung entweder eine explizite oder implizite Entfernung des Hintergrunds; Bewegungen im Hintergrund sind ablenkend und sollten ignoriert werden {cite}'inproceedings'. 
+## Anwendungsbereiche von Action Recognition
+
+![application_realm_ar](img/Application_realm_AR.png)
+
+Das Verstehen von Bewegungen oder Aktivitäten aus Bildern und Videosequenzen ist eine sehr wichtige, aber schwierige Aufgabe. Das Gebiet der Handlungs- und Aktivitätsdarstellung und -erkennung ist recht gut erforscht (ZITAT) aber noch nicht sehr ausgereift für viele Anwendungen im realen Leben. Die Erkennung der Identität von Personen sowie der Aktionen, Aktivitäten und Verhaltensweisen, die von einer oder mehreren Personen in Videosequenzen ausgeführt werden, ist für verschiedene Anwendungen sehr wichtig. Diverse Anwendungen sind bereits auf dieses Ziel ausgerichtet, um Videos richtig zu verstehen, z.B. in
+
+- Intelligente Videoüberwachung,
+- Mixed Reality
+- Mensch-Computer-Interaktion,
+- Gesichtsanalyse,
+- Objektverfolgung,
+- Sport-Analytics
+- usw. 
+## Action Recogintion arten
 
 Action Recognition ist ein Feld der Computer Vision und kann in mehrere Kategorien unterteilt werden
 
+Es gibt verschiedene Ansätze für die Erkennung und Analyse von Handlungen und Aktivitäten.
+
 Action Classifcation wird versucht, einem gegebenen Bild oder Video die richtige Bezeichnung (z. B. "Kochen", "Schreiben" usw.) zuzuordnen.
 Action Localization wird versucht, anhand einer bestimmten Aktion und eines Videos den richtigen Ort und Zeitstempel im Video zu ermitteln, an dem die Aktion ausgeführt wird.
-## Anwendung von Action Recognition
-## Stand der Technik von Action Recognition 
 
-In dieser Vortrag geht es speziell um Video-Basierte Action Recognition. Doch ist es erstmals wichtig zu klären, was das Inputsignal im Deep Learning Kontext ist. 
-Notwendigerweiser nehmen Images und Videos als Inputs Anwendung in dieser Domäne. Es gilt diese Begriff voneinander bedingt voneinander zu differenzieren.
-Ein Image $I$ ist ein 2D-Signal bestehend neben den Anzahl von Kanälen aus spatialen (räumlichen) Komponenten:
+Pose Estimation 
 
-$I = x \times y$ 
+Apperance-based methoeds
 
-wobei 
+Motion-based methods 
 
-- $x$, $y$ den spatialen Koordinaten eines Signals entsprechen.
-
-Formell ist ein Video ein 3D-Signal $V$ bestehend aus der Anzahl der Kanälen, spatialen (räumlichen) und temporalen (zeitlichen) Kompontenten:
-
-$V =  x \times y \times t$
-
-wobei
-
-- $x$, $y$ den spatialen Koordinaten eines Signals entsprechen,
-- $t$ die temporale Koordinate eines Signals entspricht.
-
-Je nachdem ob $t$ präsent ist, ist das Signal ein Video oder ein Image. Somit können wir Videos als eine zeitlich aufeinanderfolgende Reihe von Images verstehen. 
-
-![Image-Sequenz](img/framesequenz.png){cite}'1544882'
-
-## Convolutional Neural Networks (CNN)
-
-Gerade für Daten mit einer gitterartigen Topologie und Raum-Zeit Beziehung wie Bilder eignen sich Convolutional Neural Networks (CNN) sehr gut als Stand der Technik. 
-
-Ein CNN folgt einem hierarchischen Modell, das wie ein Trichter ein Netzwerk aufbaut und schließlich eine vollständig verbundene Schicht hervorbringt, in der alle Neuronen miteinander verbunden sind und die Ausgabe verarbeitet wird. 
-Ein CNN besteht im Grunde genommen aus: 
-
-- Input Layer
-- Convolutional Layer
-- Pooling Layer
-- Fully Connected Layers 
-- Output Layer
-
-### Convolutional Layer 
-bestehen aus einer Reihe von Filtern (auch Kernel genannt), die auf ein Eingangsbild angewendet werden. Die Ausgabe der Convolutional Layer ist eine Feature Map, die eine Darstellung des Eingangsbildes mit den angewendeten Filtern ist. Convolutional Layer können gestapelt werden, um komplexere Modelle zu erstellen, die kompliziertere Merkmale aus Bildern lernen können. 
-### Pooling Layer
-Sind eine Art Convolutional Layer. Pooling-Layer reduzieren die räumliche Größe der Eingabe, wodurch sie leichter zu verarbeiten sind und weniger Speicherplatz benötigen. Pooling hilft auch, die Anzahl der Parameter zu reduzieren und macht das Training schneller. Es gibt zwei Hauptarten von Pooling: Max-Pooling und Average-Pooling. Beim Max-Pooling wird der Maximalwert aus jeder Feature Map genommen, während beim Average-Pooling der Durchschnittswert genommen wird. Pooling-Schichten werden in der Regel nach Convolutional Layer verwendet, um die Größe der Eingabe zu reduzieren, bevor sie in eine voll verknüpfte Schicht eingespeist wird. 
-### Fully Connected Layer 
-Wie der Name schon sagt, ist jedes Neuron in einer voll verbundenen Schicht mit jedem anderen Neuron in der vorherigen Schicht voll verbunden. Fully Connected layer werden in der Regel gegen Ende eines CNN verwendet, wenn das Ziel darin besteht, die von den vorherigen Schichten gelernten Merkmale für Vorhersagen zu verwenden. Wenn wir zum Beispiel ein CNN verwenden, um Bilder von Tieren zu klassifizieren, könnte die letzte vollständig verbundene Schicht die von den vorherigen Schichten gelernten Merkmale verwenden, um ein Bild als Hund, Katze, Vogel usw. zu klassifizieren. 
-#### LeNet-5
-
-Das erste CNN wurde von Lecun et. al (1998) unter der Bezeichnung "LetNet-5" vorgestellt.
-
-
-![LeNet-5](img/LeNet-5.png){cite}'lecun-gradientbased-learning-applied-1998'
-
-
-Sie wurde 1998 von Yann LeCun, Corinna Cortes und Christopher Burges für Probleme bei der Erkennung handgeschriebener Ziffern entwickelt. LeNet war eines der ersten erfolgreichen CNNs und wird oft als "Hello World" des Deep Learning betrachtet. Es ist eine der frühesten und am weitesten verbreiteten CNN-Architekturen. Die LeNet-Architektur besteht aus mehreren Convolution- und Pooling Layer, gefolgt von einem Fully Connected Layer. Das Modell hat fünf Convolution Layer, gefolgt von zwei vollständig verbundenen Schichten. LeNet war der Beginn der CNNs im Bereich des Deep Learning für Computer-Vision-Probleme. Allerdings konnte LeNet aufgrund des Problems des vanishing-gradient-problem nicht gut trainiert werden. Um dieses Problem zu lösen, wird zwischen den Convolution Layer eine verkürzte Verbindungsschicht, das so genannte Max-Pooling, verwendet, um die räumliche Größe der Bilder zu reduzieren, wodurch Overfitting verhindert wird und das CNN effektiver trainieren werden kann.
-________
-
-#### AlexNet
-
-Das AlexNet ist ein großer Meilenstein in der Erkennung von Standbilderkennung. 
-
-
-![AlexNet](img/AlexNetArchitecture.png){cite}'NIPS2012_c399862d'
-
-
-Mit der Einführung des AlexNet, einer CNN-Architektur hat der Bereich der Standbilderkennung große Fortschritte gemacht hat.
-Es ist die Deep-Learning-Architektur, die CNNs populär gemacht hat, aufgrund seines Erfolgs im ILSVRC 2012. Sie wurde von Alex Krizhevsky, Ilya Sutskever und Geoff Hinton entwickelt. Das AlexNet hatte eine sehr ähnliche Architektur wie LeNet-5, war jedoch tiefer und größer und verfügte über übereinander gestapelte Convolution Layer. Die AlexNet-Architektur wurde für die Verwendung mit großen Bilddatensätzen entwickelt und erzielte zum Zeitpunkt ihrer Veröffentlichung die besten Ergebnisse. AlexNet besteht aus 5 Faltungsschichten mit einer Kombination aus Max-Pooling-Schichten, 3 vollständig verbundenen Schichten und 2 Dropout-Schichten. Die in allen Schichten verwendete Aktivierungsfunktion ist ReLu. Die in der Ausgabeschicht verwendete Aktivierungsfunktion ist Softmax. Die Gesamtzahl der Parameter in dieser Architektur beträgt etwa 60 Millionen.
-
-
-![Spatial-Temporal](img/temporal.png){cite}'1544882'
-
-Dies sind Architekturen von Neuronale Netzwerken, die in der Standbilderkennung, oder auch im 2D Bereich erfolgreich angewandt werden können. Sobald es in den 3D Bereich geht, in denen es räumlich-zeitliche Abhängigkeiten vorkommen, gibt es relativ zur Standbilderkennung zurzeit wenig bemerkenswert signifikanten Funde im Bereich der videobasierten Erkennung. Das liegt daran, dass 2D-CNNs nicht in der Lage sind, temporale Informationen und Bewegungsmuster zu modellieren, die man als kritische Aspekte für die Videoanalyse ansehen würde {cite}'8578773'. Um den Inhalt eines Videos effektiv beschreiben zu können, müssen die Objekte und Ereignisse in den Bildsequenzen, aus denen das Video besteht, erkannt werden. Die robuste und genaue Erkennung von Ereignissen, die in Bildsequenzen auftreten, ist jedoch nach wie vor ein Problem.  Somit ist Videoverständnis eines der zentralen Probleme im Bereich von Computer Vision der letzten Jahrzehnte. In Kombination mit den aufgezeigten Beispielen stellt sich vereinfacht die Frage:
-
-Wie kann man CNN für die Verwendung zur Analyse von Bildsequenzen erweitern?
-
-Die logische Schlussfolgerung und ein bekannter Ansatz ist die Verwendung von 3D-CNNs. Wenn im Einsatz für Videoanalyseprobleme, ist es wünschenswert, die Bewegungsinformationen in mehreren zusammenhängenden Bildern zu kodieren. CNNs den Diese sind in der Lage Features 
-
-![3D Convolution](img/3D_Convolution.png){cite}'journals/pami/JiXYY13'
+Space-time methods 

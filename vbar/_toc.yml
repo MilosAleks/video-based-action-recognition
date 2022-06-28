@@ -5,6 +5,7 @@ format: jb-book
 root: overview
 chapters:
 - file: introduction
+- file: basics
 - file: architectures
 - file: experiments
 - file: conclusion
