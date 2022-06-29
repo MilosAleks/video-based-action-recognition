@@ -91,7 +91,7 @@ Ein Interessanter Ansatz für die Lösung dieses Problems ist die Wahl von Resid
 
 ![residual_block](img/residualblock.gif)
 
-Auch als ResNet bezeichnet, bedienen sich an dem Konzept Überspringen von Verbindungen zwischen Convolution-Layer. Die "Skips" werden als Residual Blöcke bezeichnet und In einem gängigen CNN sind die Convolution Layer aufeinander gestapelt bzw. laufen sequentiell chronologisch ab. 
+Auch als ResNet bezeichnet, bedienen sich an dem Konzept "Überspringen von Verbindungen" zwischen Convolution-Layer. Die "Skips" werden als Residual Blöcke bezeichnet und sind die Basis für die ResNet Architektur. In einem gängigen CNN sind die Convolution Layer aufeinander gestapelt bzw. laufen sequentiell chronologisch ab. Durch das Überspringen von Convolution Layer, addiere
 
 Mit Residualen neuronalen Netzwerken im Kontext von Action Recognition haben sich Du Tran et. al in unserem Basispaper {cite}'8578773' verschiedene Architekturen für Action Recognition Tasks empirisch Untersucht.
 ### Two-Stream-Convolutional Neural Network 
@@ -99,7 +99,15 @@ Mit Residualen neuronalen Netzwerken im Kontext von Action Recognition haben sic
 ![2SteamCNN](img/2_stream_nn.png)
 {cite}'1544882'
 
-Simonyan und Zisserman {cite}'https://doi.org/10.48550/arxiv.1406.2199' schlagen 2014 eine Two-Stream-Architektur vor, die spatiale und temporale Merkmale getrennt verarbeitet. Ein Einzelbild des Videos wird an ein 2D-Faltungsnetz weitergeleitet, während der vorverarbeitete optical Flows mehrerer Bilder an ein separates 2D-Faltungsnetz weitergeleitet wird. Jeder Stream bildet eine Vorhersage, und die Klassenbewertung wird durch ihre Fusion bestimmt. Der Nachteil dieser Architektur ist, dass sie nicht durchgängig trainierbar ist, da der optical Flow separat berechnet werden muss und beide Ströme separat trainiert werden müssen. Der räumliche Stream kann aus großen Bilddatensätzen lernen, während der zeitliche Stream auf einem Videodatensatz trainiert werden muss. Auf diese Weise ist das Transfer-Lernen für diese Architektur nicht vollständig anwendbar. Außerdem erschwert die für die Berechnung des optical Flows erforderliche Vorverarbeitung die Echtzeitfähigkeit dieses Algorithmus. Ein großer Nachteil ist der Two-Stream-Variante ist durch den die Berechnung des optical Flow über die Rohdaten nicht Echtzeitfähig sind (ZITAT)
+Simonyan und Zisserman {cite}'https://doi.org/10.48550/arxiv.1406.2199' schlagen 2014 eine Two-Stream-Architektur vor, die spatiale und temporale Merkmale getrennt verarbeitet. Ein Einzelbild des Videos wird an ein 2D-Faltungsnetz weitergeleitet, während der vorverarbeitete optical Flows mehrerer Bilder an ein separates 3D-CNN weitergeleitet wird. Jeder Stream bildet eine Vorhersage, und die Klassenbewertung wird durch ihre Fusion bestimmt. Der Nachteil dieser Architektur ist, dass sie nicht durchgängig trainierbar ist, da der optical Flow separat berechnet werden muss und beide Ströme separat trainiert werden müssen. Der räumliche Stream kann aus großen Bilddatensätzen lernen, während der zeitliche Stream auf einem Videodatensatz trainiert werden muss. Auf diese Weise ist das Transfer-Lernen für diese Architektur nicht vollständig anwendbar. Außerdem erschwert die für die Berechnung des Optical Flows die erforderliche Vorverarbeitung die Echtzeitfähigkeit dieses Algorithmus. 
+
+Der State of the Art Ansatz mit der besten Performance ist die Kombination aus 3D-Convolutions, Residualem lernen sowie der Two Stream Verarbeitung von spatialen und temporalen Merkmalen. Sie ist bekannt als I3D Architektur {cite}'https://doi.org/10.48550/arxiv.1406.2199',{cite}'https://doi.org/10.48550/arxiv.1611.02155', {cite}'https://doi.org/10.48550/arxiv.1705.07750'
+
+![I3D](img/I3D.png)
 
 
 
+
+# Inferenz
+
+alle Grundlagen 
