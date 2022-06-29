@@ -123,7 +123,7 @@ Dabei stellt sich heraus, dass ab einer Input-Größe von 20 Frames kaum Untersc
 In diesem Abschnitt validieren wir eine 34-Schichten-Version unserer R(2+1)D Architektur auf mehreren bekannten Datensätzen.
 Der Aufbau der Schichten ist dabei unverändert, und kann entsprechend dem Abschnitt *Setup* entnommen werden.
 
-Wir trainieren die Architektur für RGB- und Optical-Flow-Inputs (und einer Kombination).
+Wir trainieren die Architektur für RGB- und Optical-Flow-Inputs, sowie einer Kombination, indem wir die Predictions zusammenführen (Two-Stream-Framework).
 
 ```{note}
 Optical-Flow ist ein Vektorfeld zwischen zwei Bildern. Dieses beinhaltet Informationen, wie die Pixel eines Elements (z.B Auto) des ersten Bildes verschoben werden können, um dieses im Zweiten nachzubilden. So können bspw. Geschwindigkeiten ermittelt werden.
@@ -138,3 +138,41 @@ Für diesen Datensatz trainierten wir unser R(2+1)-34, und ein R3D-34 Netz, mit 
 Da die Videos im Durchschnitt über 5 Minuten sind, nehmen wir 100 (nicht 10 wie bei Kinetics), Clips pro Video um die Top-1-Video-Accuracy zu berechnen.
 
 ![Ergebnisse mit Sports-1M](img/sports-1m_res.png)
+
+Unser R(2+1)D Modell für RGBs erzielt im Vergleich mit den Weiteren die höchste Accuracy.
+In der Clip-Accuracy übertrifft es C3D um 11%, P3D um 9% und 2D ResNet um 10.5%.
+*Dabei ist zu beachten, dass 2D ResNet und P3D 152 aus Schichten bestehen, während R(2+1)D nur 34 Schichten hat.*
+Auch das "normale" R3D ist um 2.5% schlechter (mit 8-Input-Frames).
+Für die Top-1-Video-Accuracy erreicht R(2+1)D 73.3%, was dem bisher besten Wert für das Datenset entspricht.
+
+
+### Kinetics
+
+Der Datensatz [Kinetics](https://www.deepmind.com/open-source/kinetics), der bisher verwendet wurde, umfasst mehr als 300.000 Videos von über 400 menschlichen Handlungen.
+
+Wir bewerten unsere R(2+1)D-34 Architektur auf Kinetics, indem wir das bereits auf Sports-1M trainierte Modell auf den neuen Datensatz anpassen (fine-tunen), und indem wir von Grund auf trainieren (hierbei behalten wir das bestehende Setup bei).
+
+Für Ersteres wählen wir eine Lernrate von 0.0001, die wir alle 4 Epochen um den Faktor 4 reduzieren. Das Fine-Tuning dauert 15 Epochen.
+
+![Ergebnisse mit Kinetics](img/kinetics_res.png)
+
+R(2+1)D übertrifft I3D um 4.5%, wenn beide Modelle von Grund auf mit RGB-Input trainiert werden.
+Unser auf Sports-1M vor-trainiertes R(2+1)D übertrifft zudem auch das auf [ImageNet](https://www.image-net.org/) vor-trainierte I3D.
+In Kombination der beiden Inputs schneiden die Architekturen fast identisch ab (0.25%).
+Dementsprechend ist unsere R(2+1)D-Architektur in der Handlungserkennung durchaus als Konkurrent zu werten.
+
+
+### UCF101 und HMDB51
+
+[UCF101](https://www.crcv.ucf.edu/research/data-sets/ucf101/) und [HMDB51](https://deepai.org/dataset/hmdb-51) sind etablierte Benchmarks für die Erkennung von Handlungen. UCF101 hat etwa 13.000 Videos aus 101 Klassen, HMDB51 6.000 Videos und 51 Klassen.
+
+In unserem abschließenden Experiment wollen wir die zuvor trainierten R(2+1)D Modelle (Sports-1M und Kinetics) auf UCF101 und HMDB51 abstimmen (fine-tunen).
+Für die Architekturen, die auf einem Kinetics vor-trainiertes Modell basieren, verwenden wir die von Grund auf trainierten Kinetics -, und nicht die darauf fein-trainierten Modelle.
+So können wir auch Erkenntnissen zu verschiedenen Datensätzen ziehen.
+
+![Ergebnisse mit UCF101 und HMDB51](img/final_res.png)
+
+R(2+1)D übertrifft alle Methoden dieses Vergleichs, mit der Ausnahme von I3D, die zum Trainieren, neben Kinetics, noch ein weiteres Datenset verwendete ([ImageNet](https://www.image-net.org/)).
+Mit RGB-Inputs erzielt R(2+1)D trotz dessen eine höhere Accuracy.
+
+Der Grund hierfür kann potentiell die im Netz implementierte Farneback Methode sein, die zwar effizient, aber nicht so exakt wie die im I3D Modell verwendete Methode ([TV-L1](https://de.mathworks.com/matlabcentral/fileexchange/57604-tv-l1-image-denoising-algorithm)) ist.
