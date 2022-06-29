@@ -20,7 +20,7 @@ Von den beschriebenen R3D Modellen leiten wir die Architekturen für R2D, MC$x$,
 
 In den Architekturen, in welchen 3D durch 2D Convolutions ersetzten werden (z.B in RMC$x$), wird das 3D Downsampling (spatio-temporal) entsprechend nur noch 2D (spatial). 
 Dieser Unterschied führt zu Aktivierung-Tensoren unterschiedlicher Größe (temporal) in der finalen Schicht, bis zu welcher unabh. davon in allen Netzwerken ein spatio-temporales Average-Pooling implementiert wird.
-Die Klassifizierung erfolgt dann mittels einem fully-connected Layer, dessen Dimension der Anzahl der Klassen entspricht (z.B 400 für Kinetik).
+Die Klassifizierung erfolgt dann mittels einer Fully-Connected-Schicht, deren Dimension der Anzahl der Klassen entspricht (z.B 400 für Kinetik).
 
 ### Training und Evaluation
 
@@ -38,7 +38,7 @@ Wir teilen die Lernrate, die initial 0.01 ist, alle 10 Epochen durch 10.
 Der Trainings-Prozess umfasst 45 Epochen.
 
 Wir erhalten die Clip-Top-1-Accuracy und Video-Top-1-Accuracy.
-Für die Video-Top-1-Accuracy werden die mittleren Ausschnitte von 10 Clips, die aus einem Video entnommen werden, verwendet. Der Durchschnitt dieser 10 Clip-Vorhersagen entspricht dann der Video-Prediction.
+Für die Video-Top-1-Accuracy werden die mittleren Ausschnitte von 10 Clips, die dem Video proportional entnommen werden, verwendet. Der Durchschnitt dieser 10 Clip-Vorhersagen entspricht dann der Video-Prediction.
 
 ```{note}
 Top-1-Accuracy ist die konventionelle Accuracy/ Genauigkeit, sprich die Modellantwort (mit der höchsten Wahrscheinlichkeit) muss die erwartete Antwort sein.
@@ -85,4 +85,36 @@ Wie dem Schaubild entnommen werden kann, erzielt R(2+1)D eine bessere Fehlerrate
 
 ## Überdenken der Praktiken für die Predictions auf Videoebene
 
-...
+Motiviert durch ein weiteres [Paper](https://arxiv-export1.library.cornell.edu/pdf/1604.04494), welches mittels Long-Term-Convolutions (und mit entsprechenden Input-Clips bis zu 100 Frames) die Modelle nochmals verbessern konnte, experimentieren wir auf unserer R(2+1)D Architektur mit Input-Clips von 16, 24, 32, 40 und 46 Frames.
+Die Netzwerke bestehen dabei aus 18 Schichten und bei dem verwendeten Datenset handelt es sich wieder um Kinetics.
+Da wir für die Netzwerke unterschiedlich viele Frames als Input verwenden, unterscheiden sich entsprechend auch deren Outputs (temporal) in der untersten Schicht.
+Um die Outputs und Parameter aller Netze identisch zu halten, implementieren wir auch hier, wie zuvor, in allen Netzen ein spatio-temporales Average-Pooling.
+Die Klassifizierung funktioniert unverändert, mittels einer Fully-Connected-Schicht.
+
+Die nächste Abbildung stellt die Top-1-Accuracy auf Clip- und Videoebene im Hinblick auf die Anzahl der Frames dar.
+
+```{note}
+Die Video-Prediction entspricht dem Durchschnitt von 10 Clips, die im Video symmetrisch verteilt sind.
+```
+
+![Video-Level-Accuracy for different Input Clips on Kinetics](img/acc_diff_lengths.png)
+
+Während die Clip-Accuracy parallel zu der Anzahl der Frames zunimmt, erreicht die Video-Accuracy bei 32 Frames ihren Höhepunkt.
+
+Um dieses Verhalten im Detail zu betrachten, führen wir 2 weitere Experimente durch.
+Für das erste Experiment nehmen wir ein Netz, welches für 8-Frame-Clips trainiert wurde, und testen dies mit 32-Frame-Input-Clips.
+Diese Tests schnitten in der Clip-Accuracy (1.5%) sowie der Video-Accuracy (6%) schlechter als der "normalen" 8-Frame-Inputs ab.
+
+Im 2. Experiment tauschen wir das Setup, indem wir für den Input des 32-Frame-Modells 8 Frames verwenden.
+Dieses Mal erzielt das Netz einen Unterschied von nur 0.25%, zu dem Netz, welches nicht auf 8-Frames fine-tuned wurde (59.8% vs. 60.1%). 
+Dies entspricht einer Verbesserung von über 7% verglichen mit dem 8-Frame Modell.
+Da das Trainieren der 8-Frame-Architektur 7.5x schneller ist, als das der 32-Frame-Architektur, kann durch das Fine-Tunen des 32-Frame-Modells mit 8-Frame-Clips die Dauer des Lernens deutlich verkürzt werden.
+
+Die Erkenntnisse der beiden Experimente deuten darauf hin, dass das Trainieren mit mehr Frames innerhalb eines Clips zu anderen (besseren) Modellen führt. So können Netze bspw. durch eine höhere Anzahl an Frames temporale Muster besser erkennen und -lernen.
+Dieses Verhalten kann aber nicht "umsonst" erreicht werden, indem die Frames erst in der Testphase erhöht werden.
+Dies stimmt mit den Erkenntnissen des oben beschriebenen Papers überein.
+
+Des Weiteren kann dem Schaubildes die Video-Top-1-Accuracy in Abh. von der Anzahl der Clips, die für die Video-Prediction verwendet wurden, entnommen werden.
+Dabei stellt sich heraus, dass ab einer Input-Größe von 20 Frames kaum Unterschiede zu erkennen sind, während die Prediction 5x (20 vs. 100 Frames) schneller ist.
+*Die Tests basieren auf einer R(2+1)D Architektur mit 18 Schichten, die mit 32-Frame-Input-Clips trainiert wurde.*
+
