@@ -101,10 +101,10 @@ und Filter (Zeit) $N_i$ der Größe
 
 $M_1 \times t \times 1 \times 1$
 
-ersetzt wird.
+ersetzt werden.
 
 Der Hyperparameter $M_i$ bestimmt die Dimensionalität des Unterraums, in welchem sich die Convolutionen befinden. In unserem Fall wird $M_i$ so bestimmt, dass die Anzahl der Parameter in den Blöcken identisch zu denen einer 3D Architektur sind. 
-Das beschriebene Raum-Zeit-Auftrennen kann in allen Schichten verwendet werden.
+Das beschriebene Auftrennen in Raum- und Zeit-Komponenten kann in allen Schichten verwendet werden.
 Operationen wie bspw. Striding werden auch, entsprechend ihrer Dimension, zerteilt. 
 Dies kann im Anschluss, in der vereinfachten Version, in welcher der Input-Tensor aus nur einem Kanal besteht ($N_{i-1} = 1$), betrachtet werden:
 

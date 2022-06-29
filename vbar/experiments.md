@@ -118,3 +118,23 @@ Des Weiteren kann dem Schaubildes die Video-Top-1-Accuracy in Abh. von der Anzah
 Dabei stellt sich heraus, dass ab einer Input-Größe von 20 Frames kaum Unterschiede zu erkennen sind, während die Prediction 5x (20 vs. 100 Frames) schneller ist.
 *Die Tests basieren auf einer R(2+1)D Architektur mit 18 Schichten, die mit 32-Frame-Input-Clips trainiert wurde.*
 
+## Handlungserkennung einer R(2+1)D Architektur mit 34 Schichten
+
+In diesem Abschnitt validieren wir eine 34-Schichten-Version unserer R(2+1)D Architektur auf mehreren bekannten Datensätzen.
+Der Aufbau der Schichten ist dabei unverändert, und kann entsprechend dem Abschnitt *Setup* entnommen werden.
+
+Wir trainieren die Architektur für RGB- und Optical-Flow-Inputs (und einer Kombination).
+
+```{note}
+Optical-Flow ist ein Vektorfeld zwischen zwei Bildern. Dieses beinhaltet Informationen, wie die Pixel eines Elements (z.B Auto) des ersten Bildes verschoben werden können, um dieses im Zweiten nachzubilden. So können bspw. Geschwindigkeiten ermittelt werden.
+Es ist eine Art des Korrespondenz-Lernens, denn wenn die Pixel eines Elements bekannt sind, kann das Feld berechnet werden.
+Im Rahmen dieser Arbeit berechnen wir dies mittels der Methode von Farneback.
+```
+
+### Sports-1M
+
+[Sports-1M](https://cs.stanford.edu/people/karpathy/deepvideo/) umfasst über eine Millionen Sport-Videos und 487 Sportarten.
+Für diesen Datensatz trainierten wir unser R(2+1)-34, und ein R3D-34 Netz, mit 8- und 32-Frame-Input-Clips.
+Da die Videos im Durchschnitt über 5 Minuten sind, nehmen wir 100 (nicht 10 wie bei Kinetics), Clips pro Video um die Top-1-Video-Accuracy zu berechnen.
+
+![Ergebnisse mit Sports-1M](img/sports-1m_res.png)
