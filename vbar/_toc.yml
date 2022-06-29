@@ -8,6 +8,7 @@ chapters:
 - file: basics
 - file: architectures
 - file: experiments
+- file: code
 - file: conclusion
 - file: references
 - file: markdown
