@@ -14,7 +14,7 @@ Basis dieser Kategorisierung ist Vecchio et al. [3](https://www.researchgate.net
 ![computer_vision](img/Computer_Vision.png)
 
 Die Action Recognition (dt. Handlungserkennung) ist ein Feld der Computer Vision.
-Unter Action Recognition versteht man den Versuch, festzustellen, ob die Eingabedaten ein bestimmtes Objekt, ein bestimmtes Merkmal oder eine bestimmte Aktivität enthalten oder ihnen ähneln. In der Computer Vision besteht Action Recognition darin, eine Action Recognition-Komponente aus einem Video oder einer Bildszene zu entschlüsseln. Auf Menschen bezogen, ist Action Recognition die Aufgabe zu erkennen, wann eine Person in einem Bild oder video eine bestimmte Handlung ausführt. 
+Unter Action Recognition versteht man den Versuch, festzustellen, ob die Eingabedaten ein bestimmtes Objekt, ein bestimmtes Merkmal oder eine bestimmte Aktivität enthalten oder ihnen ähneln. In der Computer Vision besteht Action Recognition darin, eine Action Recognition-Komponente aus einem Video oder einer Bildszene zu entschlüsseln. Auf Menschen bezogen, ist Action Recognition die Aufgabe zu erkennen, wann eine Person in einem Bild oder Video eine bestimmte Handlung ausführt. 
 Dazu gehört die Tatsache, dass Handlungen dynamisch sind und in der Regel nicht einfach durch die Betrachtung einzelner Zeitpunkte erkannt werden können.
 ## Anwendungsbereiche von Action Recognition
 
