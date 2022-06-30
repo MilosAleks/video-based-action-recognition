@@ -10,8 +10,8 @@ Da ein *gutes* Video-Modell auch effektives Transfer-Lernen (auf andere Datenset
 ### Netzwerk Architektur
 
 Die Experimente werden auf Deep-Residual-Netze, durch deren Einfachheit und Leistungspotential, beschränkt.
-Es existieren 2 R3D Architekturen (3D ResNet) für das Experiment. 
-Die erste Architektur umfasst 18, und die Zweite 34 Schichten.
+Wir implementieren 2 R3D Architekturen für das Experiment.
+Erstere umfasst 18, die zweite Architektur 34 Schichten.
 
 Der Input der Netze bestehen aus RGB-Frames mit einer Größe von 112 x 112.
 Downsampling wird in der ersten Schicht, in Form von Striding mit einer Größe $1 \times 2 \times 2$ (spatial) und in den Schichten 3, 4 und 5 mit der Größe $2 \times 2 \times 2$ (spatio-temporal) verwendet.
