@@ -24,8 +24,8 @@ Das Verstehen von Bewegungen oder Aktivitäten aus Bildern und Videosequenzen is
 
 - Intelligente Videoüberwachung,
 - Mixed Reality
-- Mensch-Computer-Interaktion,
-- Gesichtsanalyse,
-- Objektverfolgung,
+- Mensch-Computer-Interaktion
+- Gesichtsanalyse
+- Objektverfolgung
 - Sport-Analytics
 - usw. 
