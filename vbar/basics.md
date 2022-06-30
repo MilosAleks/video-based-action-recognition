@@ -133,8 +133,8 @@ Ein Interessanter Ansatz für die Lösung dieses Problems ist die Wahl von Resid
 Dieser Ansatz bedient sich an dem Konzept "Überspringen von Verbindungen" zwischen Convolution-Layer. Die "Skips" werden als Residual Blöcke bezeichnet und sind die Basis für die ResNet Architektur. In einem gängigen CNN sind die Convolution Layer aufeinander gestapelt bzw. laufen sequentiell chronologisch ab.
 
 Mit Residualen neuronalen Netzwerken im Kontext von Action Recognition haben sich Du Tran et. al in unserem Basispaper [*](https://arxiv.org/pdf/1711.11248.pdf) verschiedene Architekturen für Action Recognition Tasks empirisch Untersucht und zu Interessanten Ergebnissen gekommen. 
-verschiedene Architekturen für Action Recognition Tasks empirisch Untersucht. Um die Nachteile des I3D zu minimieren, wurden ein R(2+1)D CNN für Action Recognition task angewandt. 
-Das R(2+1)D Convolutions in einer von ResNet inspirierten Architektur. Die Verwendung dieser Faltungen im Vergleich zu regulären 3D-Faltungen verringert die Rechenkomplexität, verhindert eine Überanpassung und führt mehr Nichtlinearitäten ein, die eine bessere Modellierung der funktionalen Beziehung ermöglichen.
 
 Diese Ansätze kombiniert resultiert in dem State of the Art Ansatz mit der besten Performance ist die Kombination aus 3D-Convolutions, Residualem lernen sowie der Two Stream Verarbeitung von spatialen und temporalen Merkmalen. Sie ist bekannt als I3D Architektur [*](https://doi.org/10.48550/arxiv.1406.2199), [*](https://doi.org/10.48550/arxiv.1611.02155), [*](https://doi.org/10.48550/arxiv.1705.07750)
 
+Um die Nachteile des I3D zu minimieren, wurden ein R(2+1)D CNN für Action Recognition task angewandt. 
+Das R(2+1)D Convolutions in einer von ResNet inspirierten Architektur. Die Verwendung dieser Faltungen im Vergleich zu regulären 3D-Faltungen verringert die Rechenkomplexität.
