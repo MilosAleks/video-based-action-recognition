@@ -31,8 +31,6 @@ Das Verstehen von Bewegungen oder Aktivitäten aus Bildern und Videosequenzen is
 - usw. 
 ## Ansätze von Action Recogintion 
 
-Action Recognition ist ein Feld der Computer Vision und kann in mehrere Kategorien unterteilt werden
-
 Es gibt verschiedene Ansätze für die Erkennung und Analyse von Handlungen und Aktivitäten.
 
 Action Classifcation wird versucht, einem gegebenen Bild oder Video die richtige Bezeichnung (z. B. "Kochen", "Schreiben" usw.) zuzuordnen.
