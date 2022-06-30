@@ -8,9 +8,6 @@ chapters:
 - file: basics
 - file: architectures
 - file: experiments
-- file: code
+- file: Action Detection I3D(UCF101_Dataset)
 - file: conclusion
-- file: references
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+
