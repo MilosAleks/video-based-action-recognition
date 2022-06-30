@@ -28,7 +28,8 @@ Je nachdem ob $t$ präsent ist, ist das Signal ein Video oder ein Image. Somit k
 
 Gerade für Daten mit einer gitterartigen Topologie und Raum-Zeit Beziehung wie Bilder eignen sich Convolutional Neural Networks (CNN) sehr gut als Stand der Technik. 
 
-Ein CNN folgt einem hierarchischen Modell, das wie ein Trichter ein Netzwerk aufbaut und schließlich eine vollständig verbundene Schicht hervorbringt, in der alle Neuronen miteinander verbunden sind und die Ausgabe verarbeitet wird. CNNs können zum Beispiel dazu verwendet werden, Objekte in einem Bild zu identifizieren oder ein Bild als Katze oder Hund zu klassifizieren. CNNs können auch für komplexere Aufgaben verwendet werden, wie z. B. die Identifizierung von interessanten Punkten in einem Bild. CNNs können auch für Zeitreihendaten wie Audiodaten oder Textdaten verwendet werden. CNNs sind ein leistungsfähiges Werkzeug im Deep Learning, mit dem in vielen verschiedenen Anwendungen hervorragende Ergebnisse erzielt wurden.
+Ein CNN folgt einem hierarchischen Modell, das wie ein Trichter ein Netzwerk aufbaut und schließlich eine vollständig verbundene Schicht hervorbringt, in der alle Neuronen miteinander verbunden sind und die Ausgabe verarbeitet wird. CNNs können zum Beispiel dazu verwendet werden, Objekte in einem Bild zu identifizieren oder ein Bild als Katze oder Hund zu klassifizieren.
+CNNs können auch für komplexere Aufgaben verwendet werden, wie z. B. die Identifizierung von interessanten Punkten in einem Bild. CNNs können auch für Zeitreihendaten wie Audiodaten oder Textdaten verwendet werden. CNNs sind ein leistungsfähiges Werkzeug im Deep Learning, mit dem in vielen verschiedenen Anwendungen hervorragende Ergebnisse erzielt wurden.
 
 Ein CNN besteht aus: 
 
