@@ -1,9 +1,9 @@
 # Architekturen
 
 ```{note}
-Die in diesem Abschnitt betrachteten spatio-temporal Convolutional-Varianten sind alle im Rahmen des Residualen-Lernens zu betrachten.
-Des Weiteren werden nur "Vanilla-Blocks" (bspw. ohne Bottlenecks) verwendet. Ein Block besteht dabei aus 2 Convolutional-Schichten oder -Layer, sowie einer Aktivierungsfunktion nach den Beiden.
-Für die Klassifizierung ist ein fully-connected Layer verantwortlich.
+Die in diesem Abschnitt betrachteten Raum-Zeit (spatio-temporal) Convolutional-Varianten sind alle im Rahmen des Residualen-Lernens zu betrachten.
+Des Weiteren werden nur "Vanilla-Blocks" (bspw. ohne Bottlenecks) verwendet. Ein Block besteht dabei aus 2 Convolutional-Schichten, sowie einer Aktivierungsfunktion (Relu) nach den Beiden.
+Für die Klassifizierung ist eine voll-verbundene (fully-connected) Schicht verantwortlich.
 ```
 
 ## Variablen
@@ -18,7 +18,7 @@ wobei
 - $H$ und $W$ für die Höhe und Breite eines Frames stehen und
 - $3$ für die Farbkanälen steht.
 
-Den Tensor $z_i$ wird über den $i$-ten Convolutional-Block des Residualen-Netzwerkes berechnet. Der Output des $i$-ten Blockes entspricht demnach
+Der Tensor $z_i$ wird über den $i$-ten Convolutional-Block des Residualen-Netzwerkes berechnet. Der Output des $i$-ten Blockes entspricht demnach
 
 $z_i = z_{i-1} + F(z_{i-1};\theta _i)$
 
@@ -26,7 +26,7 @@ wobei
 
 - $F(;\theta _i)$ die Komposition von 2 Convolutions, mit den Gewichten $\theta _i$ und Aktivierungsfunktionen, implementiert.
 
-## R2D: 2D Convolutions über Ausschnitt
+## R2D: 2D Convolutions über Clips
 
 Da bei 2D CNN's für Videos die temporale Anordnung der Frames nicht beachtet wird, werden diese wie Kanäle behandelt.
 Der 4D Input-Tensor entspricht demnach einem 3D Input-Tensor.
@@ -36,8 +36,8 @@ $N_i \times H_i \times W_i$
 
 wobei
 
-- $N_i$ der Anzahl der im verwendeten Convolution-Filter im $i$-ten Block entspricht und
-- $H_i$ und $W_i$ die spatial Dimensionen, die durch Pooling oder Striding abnehmen können, sind.
+- $N_i$ der Anzahl der verwendeten Convolution-Filter im $i$-ten Block entspricht und
+- $H_i$ und $W_i$ die räumlichen/ spatialen Dimensionen, die durch Pooling oder Striding abnehmen können, sind.
 
 Jeder Filter ist 3D und mit der Größe
 
@@ -48,13 +48,14 @@ wobei
 - $d$ für die räumliche Breite und Höhe steht.
 
 ```{note}
-Die Convolution der 3D Filter sind nur über die räumlichen Dimensionen (und dementsprechend 2D) des vorhergehenden Tensors $z_{i-1}$. So fasst die erste Convolution-Schicht, indem alle Filter nur einen Output-Kanal haben, alle Informationen in einen Kanal zusammen. Entsprechend sind in den weiteren Schichten diese temporalen Informationen nicht mehr nachzuvollziehen.
+Die Convolution der 3D Filter sind nur über die räumlichen Dimensionen (und dementsprechend 2D) des vorhergehenden Tensors $z_{i-1}$. So fasst die erste Convolution-Schicht, indem alle Filter nur einen Output-Kanal haben, alle Informationen in einen Kanal zusammen. *Entsprechend sind in den weiteren Schichten die temporalen Informationen nicht mehr nachzuvollziehen.*
 ```
 
 ## F-R2D: (Frame-based) 2D Convolution
 
 In diesem Ansatz werden die Frames unabh. voneinander über eine Reihe 2D Residual-Blöcken bearbeitet. Hierbei werden die selben Filter für alle Frames verwendet.
-Sprich: In den Convolutional-Schichten wird nicht temporal modelliert.
+
+*Sprich: In den Convolutional-Schichten wird (auch) nicht temporal modelliert.*
 
 ## R3D: 3D Convolutions
 
