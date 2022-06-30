@@ -14,18 +14,18 @@ Basis dieser Kategorisierung ist Vecchio et al. [3](https://www.researchgate.net
 ![computer_vision](img/Computer_Vision.png)
 
 Die Action Recognition (dt. Handlungserkennung) ist ein Feld der Computer Vision.
-Unter Action Recognition versteht man den Versuch, festzustellen, ob die Eingabedaten ein bestimmtes Objekt, ein bestimmtes Merkmal oder eine bestimmte Aktivität enthalten oder ihnen ähneln. In der Computer Vision besteht Action Recognition darin, eine Action Recognition-Komponente aus einem Video oder einer Bildszene zu entschlüsseln. Auf Menschen bezogen, ist Action Recognition die Aufgabe zu erkennen, wann eine Person in einem Bild oder Video eine bestimmte Handlung ausführt. 
+Unter Action Recognition versteht man den Versuch, festzustellen, ob die Eingabedaten ein bestimmtes Objekt, ein bestimmtes Merkmal oder eine bestimmte Aktivität enthalten oder ihnen ähneln. Man möchte eine Action Recognition-Komponente aus einem Video oder einer Bildszene zu entschlüsseln. Auf Menschen bezogen, ist Action Recognition die Aufgabe zu erkennen, wann eine Person in einem Bild oder Video eine bestimmte Handlung ausführt. 
 Dazu gehört die Tatsache, dass Handlungen dynamisch sind und in der Regel nicht einfach durch die Betrachtung einzelner Zeitpunkte erkannt werden können.
 ## Anwendungsbereiche von Action Recognition
 
 ![application_realm_ar](img/Application_realm_AR.png)
 
-Das Verstehen von Bewegungen oder Aktivitäten aus Bildern und Videosequenzen ist eine sehr wichtige, aber schwierige Aufgabe. Das Gebiet der Handlungs- und Aktivitätsdarstellung und -erkennung ist recht gut erforscht [5](https://ieeexplore.ieee.org/document/5771378)' aber noch nicht sehr ausgereift für viele Anwendungen im realen Leben. Die Erkennung der Identität von Personen sowie der Aktionen, Aktivitäten und Verhaltensweisen, die von einer oder mehreren Personen in Videosequenzen ausgeführt werden, ist für verschiedene Anwendungen sehr wichtig. Diverse Anwendungen sind bereits auf dieses Ziel ausgerichtet, um Videos richtig zu verstehen, z.B. in
+Das Verstehen von Bewegungen oder Aktivitäten aus Bildern und Videosequenzen ist eine sehr wichtige, aber schwierige Aufgabe. Das Gebiet der Handlungs- und Aktivitätsdarstellung und -erkennung ist recht gut erforscht [5](https://ieeexplore.ieee.org/document/5771378) aber noch nicht sehr ausgereift für viele Anwendungen im realen Leben. Die Erkennung der Identität von Personen sowie der Aktionen, Aktivitäten und Verhaltensweisen, die von einer oder mehreren Personen in Videosequenzen ausgeführt werden, ist für verschiedene Anwendungen sehr wichtig. Diverse Anwendungen sind bereits auf dieses Ziel ausgerichtet, um Videos richtig zu verstehen, z.B. in
 
 - Intelligente Videoüberwachung,
 - Mixed Reality
-- Mensch-Computer-Interaktion,
-- Gesichtsanalyse,
-- Objektverfolgung,
+- Mensch-Computer-Interaktion
+- Gesichtsanalyse
+- Objektverfolgung
 - Sport-Analytics
 - usw. 

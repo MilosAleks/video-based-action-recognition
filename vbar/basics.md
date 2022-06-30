@@ -20,8 +20,6 @@ wobei
 - $t$ die temporale Koordinate eines Signals entspricht.
 
 Je nachdem ob $t$ präsent ist, ist das Signal ein Video oder ein Image. Somit können wir Videos als eine zeitlich aufeinanderfolgende Reihe von Images verstehen. 
-
-![Image-Sequenz](img/framesequenz.png)
 ### Convolutional Neural Networks (CNN)
 
 Gerade für Daten mit einer gitterartigen Topologie und Raum-Zeit Beziehung wie Bilder eignen sich Convolutional Neural Networks (CNN) sehr gut als Stand der Technik. 
@@ -73,10 +71,11 @@ AlexNet besteht aus 5 Convolution Layer mit einer Kombination aus Max-Pooling-Sc
 #### Herausforderungen
 
 ![Spatial-Temporal](img/temporal.png)
-[Spatial-Temporal ](https://ieeexplore.ieee.org/document/1544882)
 
 ![Image-Sequenz](img/framesequenz.png)
-{cite}'1544882'
+
+[Spatial-Temporal ](https://ieeexplore.ieee.org/document/1544882)
+
 
 Dies sind Architekturen von Neuronale Netzwerken, die in der Standbilderkennung, oder auch im 2D Bereich erfolgreich angewandt werden können. Sobald es in den 3D Bereich geht, in denen es räumlich-zeitliche Abhängigkeiten vorkommen, gibt es relativ zur Standbilderkennung zurzeit wenig bemerkenswert signifikanten Funde im Bereich der videobasierten Erkennung.
 Das liegt daran, dass 2D-CNNs nicht in der Lage sind, temporale Informationen und Bewegungsmuster zu modellieren, die man als kritische Aspekte für die Videoanalyse ansehen würde [*](https://arxiv.org/pdf/1711.11248.pdf).
@@ -131,7 +130,7 @@ Ein Interessanter Ansatz für die Lösung dieses Problems ist die Wahl von Resid
 
 ![residual_block](img/residualblock.gif)
 
-Dieser Ansatz bedient sich an dem Konzept "Überspringen von Verbindungen" zwischen Convolution-Layer. Die "Skips" werden als Residual Blöcke bezeichnet und sind die Basis für die ResNet Architektur. In einem gängigen CNN sind die Convolution Layer aufeinander gestapelt bzw. laufen sequentiell chronologisch ab. Durch das Überspringen von Convolution Layer, addiere
+Dieser Ansatz bedient sich an dem Konzept "Überspringen von Verbindungen" zwischen Convolution-Layer. Die "Skips" werden als Residual Blöcke bezeichnet und sind die Basis für die ResNet Architektur. In einem gängigen CNN sind die Convolution Layer aufeinander gestapelt bzw. laufen sequentiell chronologisch ab.
 
 Mit Residualen neuronalen Netzwerken im Kontext von Action Recognition haben sich Du Tran et. al in unserem Basispaper [*](https://arxiv.org/pdf/1711.11248.pdf) verschiedene Architekturen für Action Recognition Tasks empirisch Untersucht und zu Interessanten Ergebnissen gekommen. 
 verschiedene Architekturen für Action Recognition Tasks empirisch Untersucht. Um die Nachteile des I3D zu minimieren, wurden ein R(2+1)D CNN für Action Recognition task angewandt. 
