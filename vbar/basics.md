@@ -98,7 +98,7 @@ Fusionsarten sind
 - Late Fusion
 - Slow Fusion
 
-Von hier aus verarbeiten der räumliche und der zeitliche Stream das Bild und den optischen Fluss mithilfe separater CNNs mit ähnlicher Struktur. Der einzige Unterschied zwischen den jeweiligen Netzwerken besteht darin, dass der zeitliche Stream angepasst ist, um Eingaben mit einer größeren Anzahl von Kanälen zu akzeptieren. Sobald die Ausgabe jedes Streams berechnet ist, werden die Stream-Repräsentationen zu einer einzigen räumlich-zeitlichen Repräsentation verschmolzen, die für die Vorhersage verwendet wird.
+Von hier aus verarbeiten der räumliche und der zeitliche Stream das Bild und den Optical Flow mithilfe separater CNNs mit ähnlicher Struktur. Der einzige Unterschied zwischen den jeweiligen Netzwerken besteht darin, dass der zeitliche Stream angepasst ist, um Eingaben mit einer größeren Anzahl von Kanälen zu akzeptieren. Sobald die Ausgabe jedes Streams berechnet ist, werden die Stream-Repräsentationen zu einer einzigen räumlich-zeitlichen Repräsentation verschmolzen, die für die Vorhersage verwendet wird.
 
 Der Nachteil dieser Architektur ist, dass sie nicht durchgängig trainierbar ist, da der Optical Flow separat berechnet werden muss und beide Ströme separat trainiert werden müssen. Der räumliche Stream kann aus großen Bilddatensätzen lernen, während der zeitliche Stream auf einem Videodatensatz trainiert werden muss. Auf diese Weise ist das Transfer-Lernen für diese Architektur nicht vollständig anwendbar. Außerdem erschwert die für die Berechnung des Optical Flows die erforderliche Vorverarbeitung die Echtzeitfähigkeit dieses Algorithmus und ist sehr Rechenintensiv.
 
