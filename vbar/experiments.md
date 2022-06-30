@@ -51,10 +51,10 @@ Top-1-Accuracy ist die konventionelle Accuracy/ Genauigkeit, sprich die Antwort 
 ![Accuracy für Handlungserkennung für verschiedene Formen von Convolutions auf dem Kinetics Datenset](img/comp_accuracy.png)
 
 Es besteht ein deutlicher Unterschied in der Performance der 2D (R2D und F-R2D) und 3D oder vermischten Residual Netzen (MC$x$ und R-MC$x$). Die 2D Architekturen schneiden im Schnitt bis zu 4% bei 8-Frame Clips und bis zu 6.5%, wenn die Modelle mit 16 Frame-Clips als Input trainiert wurden, schlechter ab. 
-Hieraus schließen wir, dass das Modellieren von Bewegungen, von Bedeutung ist (wie in MC$x$ beschrieben).
 
-Der Unterschied besteht darin, dass im Vergleich zu den 3D oder MC$x$ Modellen, welche die temporalen Informationen beibehalten, R2D und F-R2D diese Informationen verlieren.
-In einer R2D Architektur werden diese Informationen innerhalb des ersten Blockes komprimiert (und entsprechend eliminiert), während F-R2D Bildmerkmale direkt aus Einzelbildern berechnet.
+Der Unterschied der Architekturen besteht darin, dass im Vergleich zu den 3D oder MC$x$ Modellen, welche die temporalen Informationen beibehalten, R2D und F-R2D diese Informationen verlieren.
+In Ersterer werden diese Informationen innerhalb des ersten Blockes komprimiert (und entsprechend eliminiert), während F-R2D Bildmerkmale direkt aus Einzelbildern berechnet.
+Hieraus schließen wir, dass das Modellieren von Bewegungen, von Bedeutung ist (wie in MC$x$ beschrieben).
 
 ```{note}
 Alle Modelle/ Architekturen (innerhalb derselben Einstellung) bekommen den identischen Input und verarbeiten entsprechend alle Bilder eines Clips (8 oder 16).
