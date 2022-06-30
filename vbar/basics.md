@@ -22,8 +22,6 @@ wobei
 Je nachdem ob $t$ präsent ist, ist das Signal ein Video oder ein Image. Somit können wir Videos als eine zeitlich aufeinanderfolgende Reihe von Images verstehen. 
 
 ![Image-Sequenz](img/framesequenz.png)
-{cite}'1544882'
-
 ### Convolutional Neural Networks (CNN)
 
 Gerade für Daten mit einer gitterartigen Topologie und Raum-Zeit Beziehung wie Bilder eignen sich Convolutional Neural Networks (CNN) sehr gut als Stand der Technik. 
