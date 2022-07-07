@@ -43,7 +43,7 @@ Pooling-Layer reduzieren die räumliche Größe der Eingabe, wodurch sie leichte
 Wie der Name schon sagt, ist jedes Neuron in einer voll verbundenen Schicht mit jedem anderen Neuron in der vorherigen Schicht voll verbunden. Fully Connected layer werden in der Regel gegen Ende eines CNN verwendet, wenn das Ziel darin besteht, die von den vorherigen Schichten gelernten Merkmale für Vorhersagen zu verwenden. Wenn wir zum Beispiel ein CNN verwenden, um Bilder von Tieren zu klassifizieren, könnte die letzte vollständig verbundene Schicht die von den vorherigen Schichten gelernten Merkmale verwenden, um ein Bild als Hund, Katze, Vogel usw. zu klassifizieren. 
 #### LeNet-5
 
-Das erste CNN wurde von Lecun et. al (1998) unter der Bezeichnung "LetNet-5" vorgestellt.
+Das erste CNN wurde von Lecun et. al (1998)[*](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf) unter der Bezeichnung "LetNet-5" vorgestellt.
 
 Sie wurde 1998 von Yann LeCun, Corinna Cortes und Christopher Burges für Probleme bei der Erkennung handgeschriebener Ziffern entwickelt. LeNet war eines der ersten erfolgreichen CNNs und wird oft als "Hello World" des Deep Learning betrachtet. 
 
@@ -74,11 +74,11 @@ AlexNet besteht aus 5 Convolution Layer mit einer Kombination aus Max-Pooling-Sc
 
 ![Image-Sequenz](img/framesequenz.png)
 
-[Spatial-Temporal ](https://ieeexplore.ieee.org/document/1544882)
+[Spatial-Temporal](https://ieeexplore.ieee.org/document/1544882)
 
 
 Dies sind Architekturen von Neuronale Netzwerken, die in der Standbilderkennung, oder auch im 2D Bereich erfolgreich angewandt werden können. Sobald es in den 3D Bereich geht, in denen es räumlich-zeitliche Abhängigkeiten vorkommen, gibt es relativ zur Standbilderkennung zurzeit wenig bemerkenswert signifikanten Funde im Bereich der videobasierten Erkennung.
-Das liegt daran, dass 2D-CNNs nicht in der Lage sind, temporale Informationen und Bewegungsmuster zu modellieren, die man als kritische Aspekte für die Videoanalyse ansehen würde [*](https://arxiv.org/pdf/1711.11248.pdf).
+Das liegt daran, dass 2D-CNNs nicht in der Lage sind, temporale Informationen und Bewegungsmuster zu modellieren, die man als kritische Aspekte für die Videoanalyse ansehen würde[*](https://arxiv.org/pdf/1711.11248.pdf).
 Um den Inhalt eines Videos effektiv beschreiben zu können, müssen die Objekte und Ereignisse in den Bildsequenzen, aus denen das Video besteht, erkannt werden. Die robuste und genaue Erkennung von Ereignissen, die in Bildsequenzen auftreten, ist jedoch nach wie vor ein Problem. Somit ist Videoverständnis eines der zentralen Probleme im Bereich von Computer Vision der letzten Jahrzehnte. In Kombination mit den aufgezeigten Beispielen stellt sich vereinfacht die Frage:
 
 Wie kann man CNN für die Verwendung zur Analyse von Bildsequenzen erweitern und vor allem, wie ist der temporal Aspekt zu modellieren?
@@ -88,7 +88,7 @@ Wie kann man CNN für die Verwendung zur Analyse von Bildsequenzen erweitern und
 ![2StreamCNN](img/2_stream_nn.png)
 [Two-Stream-CNN](https://ieeexplore.ieee.org/document/1544882)
 
-Die Two-Stream-Netzarchitektur ist durch die Zwei-Strom-Hypothese für den menschlichen visuellen Kortex in der Biologie [*](https://pubmed.ncbi.nlm.nih.gov/1374953/motiviert), die besagt, dass das Gehirn über getrennte Pfade für die Erkennung von Objekten und Bewegungen verfügt.In dem Versuch, diese Struktur zu imitieren, verwendet die Two-Stream-Netzwerkarchitektur für das Videoverständnis zwei separate Netzwerkkomponenten, die jeweils für die Verarbeitung von Raum- und Bewegungsinformationen zuständig sind. Die Zwei-Strom-Architektur delegiert also die Aufgaben der Objekterkennung und des Bewegungsverständnisses an separate Netzwerkkomponenten, die unterschiedliche Pfade für räumliche und zeitliche Hinweise bilden.
+Die Two-Stream-Netzarchitektur ist durch die Zwei-Strom-Hypothese für den menschlichen visuellen Kortex in der Biologie [*](https://pubmed.ncbi.nlm.nih.gov/1374953/motiviert), die besagt, dass das Gehirn über getrennte Pfade für die Erkennung von Objekten und Bewegungen verfügt. In dem Versuch, diese Struktur zu imitieren, verwendet die Two-Stream-Netzwerkarchitektur für das Videoverständnis zwei separate Netzwerkkomponenten, die jeweils für die Verarbeitung von Raum- und Bewegungsinformationen zuständig sind. Die Zwei-Strom-Architektur delegiert also die Aufgaben der Objekterkennung und des Bewegungsverständnisses an separate Netzwerkkomponenten, die unterschiedliche Pfade für räumliche und zeitliche Hinweise bilden.
 
 Die Eingabe in die Zwei-Stream-Architektur konzentriert sich in der Regel auf ein Einzelbild im Eingangsvideo, das direkt in den räumlichen Stream des Netzwerks eingegeben wird (d. h. es werden keine benachbarten Bilder berücksichtigt). Als 
 Simonyan und Zisserman [*](https://doi.org/10.48550/arxiv.1406.2199) schlagen 2014 eine Two-Stream-Architektur vor, die spatiale und temporale Merkmale getrennt verarbeitet. Ein Einzelbild des Videos wird an ein 2D-Convolution neural Network weitergeleitet, während der vorverarbeitete Optical Flows mehrerer Bilder an ein separates 3D-CNN weitergeleitet wird. Jeder Stream bildet eine Vorhersage, und die Klassenbewertung wird durch ihre Fusion bestimmt. 
